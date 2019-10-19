@@ -1,4 +1,5 @@
 # testcafe-chrome-plugin
  testcafe-chrome-plugin
 
-developing
+under developing
+
