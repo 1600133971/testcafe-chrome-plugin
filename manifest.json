@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "testcafe-chrome-plugin",
+  "version": "1.0",
+  "description": "testcafe-chrome-plugin",
+  "author": "1600133971",
+  "icons": {
+    "16": "img/icon.png",
+    "48": "img/icon.png",
+    "128": "img/icon.png"
+  },
+  "browser_action": {
+    "default_icon": "img/icon.png",
+    "default_title": "TestCafe test recorder for chrome",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["content-script.js"]
+  }],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+     "tabs",
+     "background",
+     "http://*/*"
+  ],
+  "web_accessible_resources": [
+    "inject.js"
+  ],
+  "devtools_page": "devtools.html",
+  "offline_enabled": true,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

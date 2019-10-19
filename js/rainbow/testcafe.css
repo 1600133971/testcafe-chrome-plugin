@@ -1,0 +1,43 @@
+pre {
+  border-radius: 10px;
+  font-size: 12px
+}
+
+pre .testcafe.keyword {
+  text-decoration: underline;
+  color: #E800E8
+}
+
+pre .testcafe.property {
+  font-style: italic;
+  color: #02DF82
+}
+
+pre .testcafe.function {
+  font-weight: bold;
+  color: #FF5809
+}
+
+pre .testcafe.action {
+  color: #28FF28
+}
+
+pre .testcafe.method {
+  color: #F75000
+}
+
+pre .testcafe.assertion {
+  color: #00FFFF
+}
+
+pre .testcafe.assertion.judge {
+  color: #00BFFF
+}
+
+pre .testcafe.window {
+  color: #FFE4C4
+}
+
+pre .testcafe.debug {
+  color: #FF0000
+}
