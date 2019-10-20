@@ -39,6 +39,10 @@
     soramame.exec();
   };
 
+  soramame.codeText = function() {
+    return getCodeBlock();
+  };
+
   /** Express Line Editor for TestCafe.Block =============
     Using Modal.js of bootstrap
    */

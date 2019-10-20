@@ -293,6 +293,14 @@ $(document).ready(function() {
     scrollLogToBottom();
   });
 
+  $("#btn_run").on('click', function(event) {
+    event.preventDefault();
+    if (typeof window.SORAMAME_BLOCK != "undefined") {
+      sendText(window.SORAMAME_BLOCK.codeText());
+      scrollLogToBottom();
+    }
+  });
+
   $("#btn_close").on('click', function(event) {
     event.preventDefault();
     close($("#close_status").val(), $("#close_reason").val());
