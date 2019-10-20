@@ -60,7 +60,11 @@
 
   $('#code-exec').click(function() {
     SORAMAME_BLOCK.execCodeBlock();
-     return false;
+    return false;
+  })
+
+  $('#trash').dblclick(function() {
+    SORAMAME_BLOCK.clearTrash();
   })
 
   /** When open dialog, focus on textbox for bootstrap3 */
