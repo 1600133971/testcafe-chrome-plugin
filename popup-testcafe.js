@@ -68,9 +68,6 @@ TestCafeRenderer.prototype.download = function (fileName, content) {
     .replace(/\s\}\);/g, '\n});');
   }
   var inst = document.createElement("a"),
-    /*blob = new Blob([js_beautify(content)], {
-      "type": "text/javascript"
-    }),*/
     blob = new Blob([bt(content)], {
       "type": "text/javascript"
     }),

@@ -19,9 +19,18 @@
   /** Serialize and transfer from blocks to code.  =============
   */
   var getCodeBlock = function() {
-    var data = $('.serialize .code-body').text().replace(/\t+\n/g, "");
-    data = data.replace(/\t+-+/g, "\n");
-    return js_beautify(data);
+    function bt(content) {
+      return content
+      .replace(/;\s/g, ';\n\n')
+      .replace(/`\s\./g, '`\n  .')
+      .replace(/=>\s{\s/g, '=> {\n  ')
+      .replace(/await\st\s\./g, 'await t\n    .')
+      .replace(/\)\s\./g, ')\n    .')
+      .replace(/\)\s\/\*/g, ')\n    /*')
+      .replace(/\s\}\);/g, '\n});');
+    }
+    var data = $('.serialize .code-body').text().trim().replace(/\s+\n/g, "").replace(/\s\s+/g, " ");
+    return bt(data);
   };
 
   soramame.setSerializeBlock  = function() {
