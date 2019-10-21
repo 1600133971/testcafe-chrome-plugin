@@ -1,19 +1,17 @@
 .frame {
-  display: block;
+  font-size: 10px;
   padding: 5px;
   border: 2px solid #000;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
-  width: auto;
-  box-sizing: border-box;
-  width: auto;
-  height: calc(100% - 5px);
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  bottom: 0px;
+  left: 0px;
 }
 
 .controls {
   border: 2px solid #000;
-  height: 230px;
+  height: 180px;
   box-sizing: border-box;
   margin-bottom: 5px;
 }
@@ -23,7 +21,7 @@
   border: 2px solid #000;
   box-sizing: border-box;
   width: 100%;
-  height: calc(100% - 155px);
+  height: calc(100% - 185px);
   overflow: auto;
   position: relative;
 }
@@ -51,7 +49,7 @@
   display: table-cell;
   vertical-align: top;
   padding: 5px;
-  font-size: 16px;
+  font-size: 10px;
   line-height: 20px;
 }
 
@@ -103,13 +101,13 @@
 
 .log .entry .content.text {
   font-family: 'Source Code Pro', 'Courier New', monospace;
-  font-size: 15px;
+  font-size: 10px;
   white-space: pre-wrap;
 }
 
 .log .entry .content.binary {
   font-family: 'Source Code Pro', 'Courier New', monospace;
-  font-size: 15px;
+  font-size: 10px;
   white-space: pre-wrap;
   color: orange;
 }

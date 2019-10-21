@@ -37,12 +37,7 @@
               <a href="#menu2" data-toggle="tab">Code</a>
             </li>
             <li id="code-test">
-              <a href="#menu3" data-toggle="tab">Test</a>
-            </li>
-            <li>
-              <a id="code-exec" href="javascript:void(0)">
-                <span class="glyphicon glyphicon-play"></span> Run
-              </a>
+              <a href="#menu3" data-toggle="tab">Run</a>
             </li>
           </ul>
           <ul class="nav navbar-nav">
@@ -539,9 +534,8 @@
                       <th></th>
                       <td>
                         <input type="submit" id="btn_connect" value="Connect" />
-                      </td>
-                      <td>
-                          <input type="submit" id="btn_run" value="Run" />
+                        <input type="submit" id="btn_run" value="Run" />
+                        <input type="submit" id="btn_clear_log" value="Clear" />
                       </td>
                     </tr>
                   </table>
@@ -585,7 +579,6 @@
                 </div>
               </div> <!-- /controls -->
               <div class="log">
-                <input type="submit" id="btn_clear_log" value="Clear" />
                 <div class="entries">
                 </div>
               </div> <!-- /log -->

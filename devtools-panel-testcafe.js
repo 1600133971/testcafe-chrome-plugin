@@ -33,12 +33,6 @@
     });
   };
 
-  soramame.execCodeBlock = function() {
-    var codeText = getCodeBlock();
-    soramame.exec = new Function(codeText);
-    soramame.exec();
-  };
-
   soramame.codeText = function() {
     return getCodeBlock();
   };
@@ -60,11 +54,6 @@
 
   $('#code-serialize').click(function() {
     SORAMAME_BLOCK.setSerializeBlock()
-  })
-
-  $('#code-exec').click(function() {
-    SORAMAME_BLOCK.execCodeBlock();
-    return false;
   })
 
   $('#trash').dblclick(function() {
