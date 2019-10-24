@@ -170,6 +170,24 @@ a.trash:hover {
   color: White;
 }
 
+/* Frame */
+.frame-block {
+  background-color: #0cc2f0;
+  color: White;
+}
+
+/* Actions */
+.actions-block {
+  background-color: #df25df;
+  color: White;
+}
+
+/* Assertions */
+.assertions-block {
+  background-color: #3937d3;
+  color: White;
+}
+
 /* Blank Line */
 .blank-block {
   background-color: White;
