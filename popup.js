@@ -71,6 +71,8 @@ RecorderUI.prototype.set_started = function() {
   e.className = e.className.replace(/ hide|hide/ig, "");
   e = document.getElementById("bexport");
   e.className += " hide";
+  e = document.getElementById("bedit");
+  e.className += " hide";
   e = document.getElementById("recording");
   e.className = e.className.replace(/ hide|hide/ig, "");
   e = document.getElementById("turl");
@@ -100,6 +102,8 @@ RecorderUI.prototype.set_stopped = function() {
   e = document.getElementById("bcomment");
   e.className += " hide";
   e = document.getElementById("bexport");
+  e.className = e.className.replace(/ hide|hide/ig, "");
+  e = document.getElementById("bedit");
   e.className = e.className.replace(/ hide|hide/ig, "");
   e = document.getElementById("recording");
   e.className += " hide";
@@ -143,11 +147,15 @@ RecorderUI.prototype.hidecomment = function(bsave) {
 }
 
 RecorderUI.prototype.export = function(options) {
-  chrome.tabs.create({url: "./popup-testcafe.html"});
+  chrome.tabs.create({url: "./coder.html"});
+}
+
+RecorderUI.prototype.edit = function(options) {
+  chrome.tabs.create({url: "./editor.html"});
 }
 
 RecorderUI.prototype.download = function(){
-  chrome.tabs.create({url: "./popup-testcafe.html?download=true"});
+  chrome.tabs.create({url: "./coder.html?download=true"});
 }
 
 RecorderUI.prototype.setBtnGoState = function(){
@@ -175,6 +183,7 @@ window.onload = function(){
   document.querySelector('input#bcomment').onclick=function() {ui.showcomment(); return false;};
   document.querySelector('input#bdownload').onclick=function() {ui.download(); return false;};
   document.querySelector('input#bexport').onclick=function() {ui.export(); return false;};
+  document.querySelector('input#bedit').onclick=function() {ui.edit(); return false;};
   document.querySelector('input#bsavecomment').onclick=function() {ui.hidecomment(true); return false;};
   document.querySelector('input#bcancelcomment').onclick=function() {ui.hidecomment(false); return false;};
   ui = new RecorderUI();
