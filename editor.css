@@ -170,19 +170,40 @@ a.trash:hover {
   color: White;
 }
 
-/* Frame */
-.frame-block {
-  background-color: #0cc2f0;
+.import-block {
+  background-color: #f70909;
   color: White;
 }
 
-/* Actions */
+.fixture-block {
+  background-color: #24c7f8;
+  color: White;
+}
+
+.test-block {
+  background-color: #971d9b;
+  color: White;
+}
+
+.await-block {
+  background-color: #f0670c;
+  color: White;
+}
 .actions-block {
-  background-color: #df25df;
+  background-color: #0682e7;
   color: White;
 }
 
-/* Assertions */
+.parameters-block {
+  background-color: #cd10f3;
+  color: White;
+}
+
+.expect-block {
+  background-color: #ec0973;
+  color: White;
+}
+
 .assertions-block {
   background-color: #3937d3;
   color: White;

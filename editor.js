@@ -89,10 +89,10 @@
   }
 
   $(document).ready(function(){
-    $('#code-coder').click();
+    $('#code-export').click();
   });
 
-  $('#code-coder').click(function() {
+  $('#code-export').click(function() {
     var doc = new Doc();
     var dt = new TestCafeRenderer(doc);
     chrome.runtime.sendMessage({
