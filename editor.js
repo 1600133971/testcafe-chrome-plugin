@@ -251,9 +251,10 @@
           index++;
           while (line[index].trim().startWith(".")) {
             var action = get2Str(line[index]);
-            var span1 = '<span class="exp-body item' + getCount() + '">' + get3Str(line[index]) + '</span>';
+            var para = get3Str(line[index]);
+            var span1 = '<span class="exp-body item' + getCount() + '">' + para + '</span>';
             var span2 = '<span class="exp-body item' + getCount() + '">' + '' + '</span>';
-            var srcSpan3 = '.' + action + '(' + span1 + (getOptionFlag(action) ? span2 : '') + ') ';
+            var srcSpan3 = '.' + action + '(' + (para != '' ? span1 : '') + (getOptionFlag(action) ? span2 : '') + ') ';
   
             var li_2 = $('<li></li>');
             li_2.addClass('actions-block');
@@ -331,7 +332,6 @@
     $('#code-export').click();
   });
 
-  var exportConent = "";
   $('#code-export').click(function() {
     var doc = new Doc();
     var dt = new TestCafeRenderer(doc);
@@ -342,17 +342,15 @@
       dt.render(false,
         function (content) {
           SORAMAME_BLOCK.setCode(content);
-          exportConent = content
 
           $("#code-edit").empty();
-          SORAMAME_BLOCK.displayCode(exportConent);
+          SORAMAME_BLOCK.displayCode(content);
         }
       );
     });
   })
 
   $('#code-block').click(function() {
-
   })
 
   $('#code-serialize').click(function() {

@@ -503,28 +503,35 @@ TestCafeRenderer.prototype.comment = function (item) {
 }
 
 TestCafeRenderer.prototype.checkPageTitle = function (item) {
-  this.stmt('.expect(Selector("head > title").textContent).eql("' + item.title + '")', 2);
+  this.stmt('.expect(Selector("head > title").textContent)', 2);
+  this.stmt('.eql("' + item.title + '")', 2);
 }
 
 TestCafeRenderer.prototype.checkPageLocation = function (item) {
-  this.stmt('.expect("' + item.url + '").notEql("")', 2);
-  this.stmt('.expect(ClientFunction(() => document.location.href.toString())()).match(/^'+ this.regexp_escape(item.url) +'$/)', 2);
+  this.stmt('.expect("' + item.url + '")', 2);
+  this.stmt('.notEql("")', 2);
+  this.stmt('.expect(ClientFunction(() => document.location.href.toString())())', 2);
+  this.stmt('.match(/^'+ this.regexp_escape(item.url) +'$/)', 2);
 }
 
 TestCafeRenderer.prototype.checkTextPresent = function (item) {
-  this.stmt('.expect(Selector("' + this.getControl(item) + '").textContent).notEql("")', 2);
+  this.stmt('.expect(Selector("' + this.getControl(item) + '").textContent)', 2);
+  this.stmt('.notEql("")', 2);
 }
 
 TestCafeRenderer.prototype.checkValue = function (item) {
   var type = item.info.type;
   if (type == 'checkbox' || type == 'radio') {
     if (item.info.checked) {
-      this.stmt('.expect(Selector("' + this.getControl(item) + '").checked).ok()', 2);
+      this.stmt('.expect(Selector("' + this.getControl(item) + '").checked)', 2);
+      this.stmt('.ok()', 2);
     } else {
-      this.stmt('.expect(Selector("' + this.getControl(item) + '").checked).notOk()', 2);
+      this.stmt('.expect(Selector("' + this.getControl(item) + '").checked)', 2);
+      this.stmt('.notOk()', 2);
     }
   } else {
-    this.stmt('.expect(await Selector("' + this.getControl(item) + '").getAttribute("value")).eql("' + item.info.value + '")', 2);
+    this.stmt('.expect(await Selector("' + this.getControl(item) + '").getAttribute("value"))', 2);
+    this.stmt('.eql("' + item.info.value + '")', 2);
   }
 }
 
@@ -532,38 +539,51 @@ TestCafeRenderer.prototype.checkText = function (item) {
   if (item.text.indexOf('\n') >= 0) {
     alert("no support for multilines!");
   } else {
-    this.stmt('.expect(Selector("' + this.getControl(item) + '").textContent).eql("' + item.text + '")', 2);
+    this.stmt('.expect(Selector("' + this.getControl(item) + '").textContent)', 2);
+    this.stmt('.eql("' + item.text + '")', 2);
   }
 }
 
 TestCafeRenderer.prototype.checkHref = function (item) {
-  this.stmt('.expect(await Selector("' + this.getControl(item) + '").hasAttribute("href")).ok()', 2);
-  this.stmt('.expect(await Selector("' + this.getControl(item) + '").getAttribute("href")).eql("' + item.info.href + '")', 2);
+  this.stmt('.expect(await Selector("' + this.getControl(item) + '").hasAttribute("href"))', 2);
+  this.stmt('.ok()', 2);
+  this.stmt('.expect(await Selector("' + this.getControl(item) + '").getAttribute("href"))', 2);
+  this.stmt('.eql("' + item.info.href + '")', 2);
 }
 
 TestCafeRenderer.prototype.checkEnabled = function (item) {
-  this.stmt('.expect(await Selector("' + this.getControl(item) + '").hasAttribute("disabled")).notOk()', 2);
-  this.stmt('.expect("' + this.getControl(item) + '").notContains("disabled")', 2);
+  this.stmt('.expect(await Selector("' + this.getControl(item) + '").hasAttribute("disabled"))', 2);
+  this.stmt('.notOk()', 2);
+  this.stmt('.expect("' + this.getControl(item) + '")', 2);
+  this.stmt('.notContains("disabled")', 2);
 }
 
 TestCafeRenderer.prototype.checkDisabled = function (item) {
-  this.stmt('.expect(await Selector("' + this.getControl(item) + '").hasAttribute("disabled")).ok()', 2);
-  this.stmt('.expect(await Selector("' + this.getControl(item) + '").getAttribute("disabled")).eql("disabled")', 2);
-  this.stmt('.expect("' + this.getControl(item) + '").contains("disabled")', 2);
+  this.stmt('.expect(await Selector("' + this.getControl(item) + '").hasAttribute("disabled"))', 2);
+  this.stmt('.ok()', 2);
+  this.stmt('.expect(await Selector("' + this.getControl(item) + '").getAttribute("disabled"))', 2);
+  this.stmt('.eql("disabled")', 2);
+  this.stmt('.expect("' + this.getControl(item) + '")', 2);
+  this.stmt('.contains("disabled")', 2);
 }
 
 TestCafeRenderer.prototype.checkSelectValue = function (item) {
-  this.stmt('.expect(await Selector("' + this.getControl(item) + '").find("option").withExactText("' + item.info.value + '").exists).ok()', 2);
+  this.stmt('.expect(await Selector("' + this.getControl(item) + '").find("option").withExactText("' + item.info.value + '").exists)', 2);
+  this.stmt('.ok()', 2);
 }
 
 TestCafeRenderer.prototype.checkSelectOptions = function (item) {
-  this.stmt('.expect(Selector("' + this.getControl(item) + '").find("option").withExactText("' + item.info.value + '").selected).ok()', 2);
-  this.stmt('.expect(Selector("' + this.getControl(item) + '").childElementCount).notEql(0)', 2);
+  this.stmt('.expect(Selector("' + this.getControl(item) + '").find("option").withExactText("' + item.info.value + '").selected)', 2);
+  this.stmt('.ok()', 2);
+  this.stmt('.expect(Selector("' + this.getControl(item) + '").childElementCount)', 2);
+  this.stmt('.notEql(0)', 2);
 }
 
 TestCafeRenderer.prototype.checkImageSrc = function (item) {
-  this.stmt('.expect(await Selector("' + this.getControl(item) + '").hasAttribute("src")).ok()', 2);
-  this.stmt('.expect(await Selector("' + this.getControl(item) + '").getAttribute("src")).notEql("")', 2);
+  this.stmt('.expect(await Selector("' + this.getControl(item) + '").hasAttribute("src"))', 2);
+  this.stmt('.ok()', 2);
+  this.stmt('.expect(await Selector("' + this.getControl(item) + '").getAttribute("src"))', 2);
+  this.stmt('.notEql("")', 2);
 }
 
 TestCafeRenderer.prototype.postToServer = function (url) {
