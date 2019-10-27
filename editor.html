@@ -308,7 +308,7 @@
                     <div id="collapse13" class="panel-collapse collapse">
                       <div class="panel-body">
                         <ol class="pallet-code block connect-area">
-                          <li class="var-block">
+                          <li class="hooks-block">
                             <div class="block-body">
                               .page `<span class="exp-body item1">http://localhost:8085/testcafe/example/index.html</span>`
                             </div>
@@ -316,7 +316,7 @@
                               .page `<span class="exp-body item1">http://localhost:8085/testcafe/example/index.html</span>`
                             </div>
                           </li>
-                          <li class="var-block">
+                          <li class="hooks-block">
                             <div class="block-body">
                               .beforeEach( async t => {
                             </div>
@@ -332,7 +332,7 @@
                               })
                             </div>
                           </li>
-                          <li class="var-block">
+                          <li class="hooks-block">
                             <div class="block-body">
                               .afterEach( async t => {
                             </div>
@@ -348,7 +348,7 @@
                               })
                             </div>
                           </li>
-                          <li class="var-block">
+                          <li class="hooks-block">
                             <div class="block-body">
                               .before( async ctx => {
                             </div>
@@ -364,7 +364,7 @@
                               })
                             </div>
                           </li>
-                          <li class="var-block">
+                          <li class="hooks-block">
                             <div class="block-body">
                               .after( async ctx  => {
                             </div>
@@ -380,7 +380,7 @@
                               })
                             </div>
                           </li>
-                          <li class="var-block">
+                          <li class="hooks-block">
                             <div class="block-body">
                               .clientScripts(
                             </div>
@@ -396,7 +396,7 @@
                               )
                             </div>
                           </li>
-                          <li class="var-block">
+                          <li class="hooks-block">
                             <div class="block-body">
                               .disablePageCaching
                             </div>
@@ -612,16 +612,6 @@
                               <span class="exp-body item1"></span>
                             </div>
                           </li>
-
-
-
-
-
-
-
-
-
-
                         </ol>
                       </div>
                     </div>
@@ -786,127 +776,7 @@
             <!-- end of side-bar -->
             <!-- Main Edit Area -->
             <div class="col-xs-8 col-xs-offset-3 main">
-              <ol class="block connect-area serialize">
-                <li class="var-block">
-                  <div class="block-body">
-                    import {<span class="exp-body item1">Selector, t, ClientFunction</span>} from "<span class="exp-body item2">testcafe</span>";
-                  </div>
-                  <div class="code-body">
-                    import {<span class="exp-body item1">Selector, t, ClientFunction</span>} from "<span class="exp-body item2">testcafe</span>";
-                  </div>
-                </li>
-                <li class="if-block">
-                  <div class="block-body">
-                    fixture<span class="exp-body item1"> </span> `<span class="exp-body item2">fixture demo</span>`
-                  </div>
-                  <div class="code-body">
-                    fixture<span class="exp-body item1"> </span> `<span class="exp-body item2">fixture demo</span>`
-                  </div>
-                  <ol>
-                    <li class="var-block">
-                      <div class="block-body">
-                        .page `<span class="exp-body item1">http://localhost:8085/testcafe/example/index.html</span>`
-                      </div>
-                      <div class="code-body">
-                        .page `<span class="exp-body item1">http://localhost:8085/testcafe/example/index.html</span>`
-                      </div>
-                    </li>
-                  </ol>
-                  <div class="block-body">
-                    ;
-                  </div>
-                  <div class="code-body">
-                    ;
-                  </div>
-                </li>
-                <li class="loop-block">
-                  <div class="block-body">
-                    test<span class="exp-body item1"> </span>("<span class="exp-body item2">TestCafeJS test</span>", async t => {
-                  </div>
-                  <div class="code-body">
-                    test<span class="exp-body item1"> </span>("<span class="exp-body item2">TestCafeJS test</span>", async t => {
-                  </div>
-                  <ol>
-                    <li class="if-block">
-                      <div class="block-body">
-                        await t
-                      </div>
-                      <div class="code-body">
-                        await t
-                      </div>
-                      <ol>
-                        <li class="if-block">
-                          <div class="block-body">
-                            .click(
-                          </div>
-                          <div class="code-body">
-                            .click(
-                          </div>
-                          <ol>
-                            <li class="var-block">
-                              <div class="block-body">
-                                Selector("<span class="exp-body item1">input#populate</span>")<span class="exp-body item2"> </span>
-                              </div>
-                              <div class="code-body">
-                                Selector("<span class="exp-body item1">input#populate</span>")<span class="exp-body item2"> </span>
-                              </div>
-                            </li>
-                            <li class="var-block">
-                              <div class="block-body">
-                                , {<span class="exp-body item1">speed: 0.1</span>}
-                              </div>
-                              <div class="code-body">
-                                , {<span class="exp-body item1">speed: 0.1</span>}
-                              </div>
-                            </li>
-                          </ol>
-                          <div class="block-body">
-                            )
-                          </div>
-                          <div class="code-body">
-                            )
-                          </div>
-                        </li>
-                        <li class="if-block">
-                          <div class="block-body">
-                            .click(
-                          </div>
-                          <div class="code-body">
-                            .click(
-                          </div>
-                          <ol>
-                            <li class="var-block">
-                              <div class="block-body">
-                                Selector("<span class="exp-body item1">button.swal-button.swal-button--Confirm</span>")<span class="exp-body item2">.withExactText("Confirm")</span>
-                              </div>
-                              <div class="code-body">
-                                Selector("<span class="exp-body item1">button.swal-button.swal-button--Confirm</span>")<span class="exp-body item2">.withExactText("Confirm")</span>
-                              </div>
-                            </li>
-                          </ol>
-                          <div class="block-body">
-                            )
-                          </div>
-                          <div class="code-body">
-                            )
-                          </div>
-                        </li>
-                      </ol>
-                      <div class="block-body">
-                        ;
-                      </div>
-                      <div class="code-body">
-                        ;
-                      </div>
-                    </li>
-                  </ol>
-                  <div class="block-body">
-                    });
-                  </div>
-                  <div class="code-body">
-                    });
-                  </div>
-                </li>
+              <ol id="code-edit" class="block connect-area serialize">
               </ol>
             </div>
             <!-- end of Main Edit Area-->

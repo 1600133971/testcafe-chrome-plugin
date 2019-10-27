@@ -189,6 +189,12 @@ a.trash:hover {
   background-color: #f0670c;
   color: White;
 }
+
+.hooks-block {
+  background-color: #760cf0;
+  color: White;
+}
+
 .actions-block {
   background-color: #0682e7;
   color: White;
