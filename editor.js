@@ -311,14 +311,16 @@
         function (content) {
           SORAMAME_BLOCK.setCode(content);
           exportConent = content
+
+          $("#code-edit").empty();
+          SORAMAME_BLOCK.displayCode(exportConent);
         }
       );
     });
   })
 
   $('#code-block').click(function() {
-    $("#code-edit").empty();
-    SORAMAME_BLOCK.displayCode(exportConent);
+
   })
 
   $('#code-serialize').click(function() {
