@@ -6,6 +6,8 @@ fixture `fixture demo`
 test ("TestCafeJS test", async t => {
   await t
     .click(Selector("input#populate"))
-    .click(Selector("button.swal-button.swal-button--Confirm").withExactText("Confirm"),{speed: 0.1}) ;
+    .click(Selector("button.swal-button.swal-button--Confirm").withExactText("Confirm"))
+    .click(Selector("input#tried-test-cafe"))
+    .drag(Selector("div#slider > span"), 186, 1) ;
 
 });

@@ -127,6 +127,18 @@
     return option.substring(1, option.length - 1);
   }
 
+  /**
+  * 取出.(内的内容
+  * @param text
+  * @returns {string}
+  */
+  function get2Str(text) {
+    let regex = /\.(.+?)\(/g;
+    let options = text.match(regex)
+    let option = options[0]
+    return option.substring(1, option.length - 1);
+  }
+
   var count = 1;
 
   function initCount() {
@@ -167,6 +179,26 @@
         }  
     });  
     return a;  
+  }
+
+  function get3Str(text) {
+    var start = text.indexOf("(")
+    var end = text.lastIndexOf(")")
+    return text.substring(start+1, end);
+  }
+
+  function getOptionFlag(action) {
+    var flag = (action == "click" ||
+                action == "doubleClick" ||
+                action == "rightClick" ||
+                action == "drag" ||
+                action == "hover" ||
+                action == "selectText" ||
+                action == "selectTextAreaContent" ||
+                action == "selectEditableContent" ||
+                action == "typeText" ||
+                action == "pressKey" );
+    return flag ? true : false;
   }
 
   soramame.displayCode  = function(codeText) {
@@ -217,17 +249,17 @@
           var codeOl_2 = $('<ol></ol>');
 
           index++;
-          while (line[index].trim().startWith(".click")) {
-            var span1 = '<span class="exp-body item' + getCount() + '">' + getParenthesesStr(line[index]) + '</span>';
+          while (line[index].trim().startWith(".")) {
+            var action = get2Str(line[index]);
+            var span1 = '<span class="exp-body item' + getCount() + '">' + get3Str(line[index]) + '</span>';
             var span2 = '<span class="exp-body item' + getCount() + '">' + '' + '</span>';
-            var srcSpan3 = '.click(' + span1 + span2 + ') ';
+            var srcSpan3 = '.' + action + '(' + span1 + (getOptionFlag(action) ? span2 : '') + ') ';
   
             var li_2 = $('<li></li>');
             li_2.addClass('actions-block');
             li_2.append(getBlockBody(srcSpan3), getCodeBody(srcSpan3));
   
             codeOl_2.append(li_2);
-
             index++;
           }
 
