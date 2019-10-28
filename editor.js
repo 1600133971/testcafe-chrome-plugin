@@ -34,19 +34,25 @@
   };
 
   soramame.setSerializeBlock  = function() {
-    var codeText = getCodeBlock();
-    $("pre code").text(codeText);
-
-    $('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
-    });
+    var code = $('<code></code>');
+    code .addClass('language-js');
+    code.append(getCodeBlock());
+    var pre = $('<pre></pre>');
+    pre.append(code);
+    $('#div-code2').empty();
+    $('#div-code2').append(pre);
+    Rainbow.color();
   };
 
   soramame.setCode  = function(codeText) {
-    $("pre code").text(codeText);
-    $('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
-    });
+    var code = $('<code></code>');
+    code .addClass('language-js');
+    code.append(codeText);
+    var pre = $('<pre></pre>');
+    pre.append(code);
+    $('#div-code0').empty();
+    $('#div-code0').append(pre);
+    Rainbow.color();
   };
 
   String.prototype.endWith = function(str){
@@ -68,7 +74,7 @@
   }
 
   /**
-   * 取出大括号内的内容
+   * {}
    * @param text
    * @returns {string}
    */
@@ -80,7 +86,7 @@
   }
 
   /**
-   * 取出中[]内的内容
+   * []
    * @param text
    * @returns {string}
    */
@@ -92,7 +98,7 @@
   }
 
   /**
-  * 取出())内的内容
+  * ())
   * @param text
   * @returns {string}
   */
@@ -104,7 +110,7 @@
   }
 
   /**
-  * 取出""内的内容
+  * ""
   * @param text
   * @returns {string}
   */
@@ -116,7 +122,7 @@
   }
 
   /**
-  * 取出``内的内容
+  * ``
   * @param text
   * @returns {string}
   */
@@ -128,7 +134,7 @@
   }
 
   /**
-  * 取出.(内的内容
+  * .(
   * @param text
   * @returns {string}
   */
@@ -164,21 +170,15 @@
     return codeDiv;
   }
 
-  /** 
-  * <pre> 
-  * @param arr 
-  * @returns {Array} 如果arr中的元素存在空字符串''，则去掉该空字符串 
-  * </pre> 
-  */  
-  function skipEmptyElementForArray(arr){  
+  function skipEmptyElementForArray(arr){
     var a = [];  
-    $.each(arr,function(i,v){  
-        var data = $.trim(v);//$.trim()函数来自jQuery  
-        if('' != data){  
-            a.push(data);  
-        }  
-    });  
-    return a;  
+    $.each(arr,function(i,v){
+      var data = $.trim(v);
+      if('' != data){
+        a.push(data);
+      }
+    });
+    return a;
   }
 
   function get3Str(text) {
@@ -188,16 +188,17 @@
   }
 
   function getOptionFlag(action) {
-    var flag = (action == "click" ||
-                action == "doubleClick" ||
-                action == "rightClick" ||
-                action == "drag" ||
-                action == "hover" ||
-                action == "selectText" ||
-                action == "selectTextAreaContent" ||
-                action == "selectEditableContent" ||
-                action == "typeText" ||
-                action == "pressKey" );
+    var flag = (
+      action == "click" ||
+      action == "doubleClick" ||
+      action == "rightClick" ||
+      action == "drag" ||
+      action == "hover" ||
+      action == "selectText" ||
+      action == "selectTextAreaContent" ||
+      action == "selectEditableContent" ||
+      action == "typeText" ||
+      action == "pressKey" );
     return flag ? true : false;
   }
 
@@ -257,7 +258,31 @@
             var srcSpan3 = '.' + action + '(' + (para != '' ? span1 : '') + (getOptionFlag(action) ? span2 : '') + ') ';
   
             var li_2 = $('<li></li>');
-            li_2.addClass('actions-block');
+            if (action == "expect") {
+              li_2.addClass('expect-block');
+            } else if (
+              action == "eql" ||
+              action == "notEql" ||
+              action == "ok" ||
+              action == "notOk" ||
+              action == "contains" ||
+              action == "notContains" ||
+              action == "typeOf" ||
+              action == "notTypeOf" ||
+              action == "gt" ||
+              action == "gte" ||
+              action == "lt" ||
+              action == "lte" ||
+              action == "within" ||
+              action == "notWithin" ||
+              action == "match" ||
+              action == "notMatch"
+            ) {
+              li_2.addClass('assertions-block');
+            } else {
+              li_2.addClass('actions-block');
+            }
+            
             li_2.append(getBlockBody(srcSpan3), getCodeBody(srcSpan3));
   
             codeOl_2.append(li_2);
@@ -300,7 +325,7 @@
   var openExpDialog = function(expBody) {
     $('#expModalDialog').modal();
     var textArea = $('#expModalText');
-    textArea.attr("size",(expBody.length < 10)? 10 : expBody.length * 2);
+    //textArea.attr("size",(expBody.length < 10)? 10 : expBody.length * 2);
     textArea.val(expBody);
   };
 
