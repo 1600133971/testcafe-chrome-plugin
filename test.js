@@ -6,12 +6,6 @@ fixture `fixture demo`
 test ("TestCafeJS test", async t => {
   await t
     .click(Selector("input#populate"))
-    .click(Selector("button.swal-button.swal-button--Confirm").withExactText("Confirm"))
-    .expect(Selector("a#href-test").textContent)
-    .eql("TestCafe")
-    .expect(await Selector("img#img-test").hasAttribute("src"))
-    .ok()
-    .expect(await Selector("img#img-test").getAttribute("src"))
-    .notEql("") ;
+    .drag(Selector("button.swal-button.swal-button--Confirm"), 9, 2) ;
 
 });

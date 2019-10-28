@@ -1,0 +1,1 @@
+node ./server/ws-server.js
