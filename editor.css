@@ -200,6 +200,96 @@ a.trash:hover {
   color: White;
 }
 
+.click-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.doubleClick-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.rightClick-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.drag-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.hover-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.selectText-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.selectTextAreaContent-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.selectEditableContent-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.typeText-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.pressKey-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.navigateTo-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.takeScreenshot-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.takeElementScreenshot-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.setFilesToUpload-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.clearUpload-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.resizeWindow-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.resizeWindowToFitDevice-block {
+  background-color: #0682e7;
+  color: White;
+}
+
+.maximizeWindow-block {
+  background-color: #0682e7;
+  color: White;
+}
+
 .parameters-block {
   background-color: #cd10f3;
   color: White;
@@ -214,6 +304,97 @@ a.trash:hover {
   background-color: #3937d3;
   color: White;
 }
+
+.eql-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.notEql-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.ok-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.notOk-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.contains-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.notContains-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.typeOf-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.notTypeOf-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.gt-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.gte-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.lt-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.lte-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.within-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.notWithin-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.match-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+.notMatch-block {
+  background-color: #3937d3;
+  color: White;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* Blank Line */
 .blank-block {

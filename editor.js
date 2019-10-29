@@ -202,6 +202,50 @@
     return flag ? true : false;
   }
 
+  var testcafeMap = new Map(
+    [
+      ['click', ['selector', 'options']],
+      ['doubleClick', ['selector', 'options']],
+      ['rightClick', ['selector', 'options']],
+      ['drag', ['selector', 'string', 'string', 'options']],
+      ['hover', ['selector', 'options']],
+      ['selectText', ['selector', 'string', 'string', 'options']],
+      ['selectTextAreaContent', ['selector', 'string', 'string', 'string', 'string', 'options']],
+      ['selectEditableContent', ['selector', 'selector', 'options']],
+      ['typeText', ['selector', 'string', 'options']],
+      ['pressKey', ['string', 'options']],
+      ['navigateTo', ['string']],
+      ['takeScreenshot', ['options']],
+      ['takeElementScreenshot', ['selector', 'string', 'options']],
+      ['setFilesToUpload', ['selector', 'string']],
+      ['clearUpload', ['selector']],
+      ['resizeWindow', ['string', 'string']],
+      ['resizeWindowToFitDevice', ['string', 'options']],
+      ['maximizeWindow', []],
+      ['expect', ['string']],
+      ['eql', ['string', 'string', 'options']],
+      ['notEql', ['string', 'string', 'options']],
+      ['ok', ['string', 'options']],
+      ['notOk', ['string', 'options']],
+      ['contains', ['string', 'string', 'options']],
+      ['notContains', ['string', 'string', 'options']],
+      ['typeOf', ['string', 'string', 'options']],
+      ['notTypeOf', ['string', 'string', 'options']],
+      ['gt', ['string', 'string', 'options']],
+      ['gte', ['string', 'string', 'options']],
+      ['lt', ['string', 'string', 'options']],
+      ['lte', ['string', 'string', 'options']],
+      ['within', ['string', 'string', 'string', 'options']],
+      ['notWithin', ['string', 'string', 'string', 'options']],
+      ['match', ['string', 'string', 'options']],
+      ['notMatch', ['string', 'string', 'options']]
+    ]
+  );
+
+  function getSpan(para) {
+    return '<span class="exp-body item' + getCount() + '">' + para + '</span>';
+  }
+
   soramame.displayCode  = function(codeText) {
     var line = skipEmptyElementForArray(codeText.split('\n'));
 
@@ -210,27 +254,20 @@
       var li = $('<li></li>');
       initCount();
       if (line[index].trim().startWith("import")) {
-        var span1 = '<span class="exp-body item' + getCount() + '">' + getBraceStr(line[index]) + '</span>';
-        var span2 = '<span class="exp-body item' + getCount() + '">' + getDQMStr(line[index]) + '</span>';
-        var srcSpan = 'import {' + span1 +'} from "' + span2 + '"; ';
+        var srcSpan = 'import {' + getSpan(getBraceStr(line[index])) +'} from "' + getSpan(getDQMStr(line[index])) + '"; ';
   
         li.addClass('import-block');
         li.append(getBlockBody(srcSpan), getCodeBody(srcSpan));
       } else if (line[index].trim().startWith("fixture")) {
-        var span1 = '<span class="exp-body item' + getCount() + '">' + '' + '</span>';
-        var span2 = '<span class="exp-body item' + getCount() + '">' + getDStr(line[index]) + '</span>';
-        var srcSpan = 'fixture' + span1 +' `' + span2 + '` ';
+        var srcSpan = 'fixture' + getSpan('') +' `' + getSpan(getDStr(line[index])) + '` ';
         var codeOl = $('<ol></ol>');
 
         index++;
         if (line[index].trim().startWith(".page")) {
-          var span = '<span class="exp-body item' + getCount() + '">' + getDStr(line[index]) + '</span>';
-          var srcSpan1 = '.page' + ' `' + span + '`';
-
+          var srcSpan1 = '.page' + ' `' + getSpan(getDStr(line[index])) + '`';
           var li_1 = $('<li></li>');
           li_1.addClass('hooks-block');
           li_1.append(getBlockBody(srcSpan1), getCodeBody(srcSpan1));
-
           codeOl.append(li_1);
         } else {
           index--;
@@ -239,9 +276,7 @@
         li.addClass('fixture-block');
         li.append(getBlockBody(srcSpan), getCodeBody(srcSpan), codeOl, getBlockBody('; '), getCodeBody('; '));
       } else if (line[index].trim().startWith("test(")) {
-        var span1 = '<span class="exp-body item' + getCount() + '">' + '' + '</span>';
-        var span2 = '<span class="exp-body item' + getCount() + '">' + getDQMStr(line[index]) + '</span>';
-        var srcSpan2 = 'test' + span1 + ' ("' + span2 +'", async t => { ';
+        var srcSpan2 = 'test' + getSpan('') + ' ("' + getSpan(getDQMStr(line[index])) +'", async t => { ';
         var codeOl_1 = $('<ol></ol>');
 
         index++;
@@ -252,37 +287,20 @@
           index++;
           while (line[index].trim().startWith(".")) {
             var action = get2Str(line[index]);
-            var para = get3Str(line[index]);
-            var span1 = '<span class="exp-body item' + getCount() + '">' + para + '</span>';
-            var span2 = '<span class="exp-body item' + getCount() + '">' + '' + '</span>';
-            var srcSpan3 = '.' + action + '(' + (para != '' ? span1 : '') + (getOptionFlag(action) ? span2 : '') + ') ';
-  
-            var li_2 = $('<li></li>');
-            if (action == "expect") {
-              li_2.addClass('expect-block');
-            } else if (
-              action == "eql" ||
-              action == "notEql" ||
-              action == "ok" ||
-              action == "notOk" ||
-              action == "contains" ||
-              action == "notContains" ||
-              action == "typeOf" ||
-              action == "notTypeOf" ||
-              action == "gt" ||
-              action == "gte" ||
-              action == "lt" ||
-              action == "lte" ||
-              action == "within" ||
-              action == "notWithin" ||
-              action == "match" ||
-              action == "notMatch"
-            ) {
-              li_2.addClass('assertions-block');
-            } else {
-              li_2.addClass('actions-block');
+            var para = get3Str(line[index]).split(",");
+            var spanList = '';
+            for (var i = 0; i < testcafeMap.get(action).length; i++) {
+              var pp = para.length > i ? para[i] : '';
+              spanList += getSpan( spanList != '' && pp != '' ? ',' + pp : pp);// || pp == ''
             }
-            
+            var srcSpan3 = '.' + action + '(' + spanList + ') ';
+
+            //var action = get2Str(line[index]);
+            //var para = get3Str(line[index]);
+            //var srcSpan3 = '.' + action + '(' + (para != '' ? getSpan(para) : '') + (getOptionFlag(action) ? getSpan('') : '') + ') ';
+
+            var li_2 = $('<li></li>');
+            li_2.addClass(action + '-block');
             li_2.append(getBlockBody(srcSpan3), getCodeBody(srcSpan3));
   
             codeOl_2.append(li_2);
@@ -364,7 +382,7 @@
       action: "get_items"
     }, function (response) {
       dt.items = response.items;
-      dt.render(false,
+      dt.render(
         function (content) {
           SORAMAME_BLOCK.setCode(content);
 

@@ -189,13 +189,10 @@ TestCafeRenderer.prototype.dispatch = d;
 
 var cc = EventTypes;
 
-TestCafeRenderer.prototype.render = function (with_xy, download) {
-  this.with_xy = with_xy;
+TestCafeRenderer.prototype.render = function (download) {
   var etypes = EventTypes;
   this.document.open();
   if (!download) {
-    this.document.writeln('<input type="text" id="run-url" value="http://127.0.0.1:8086/scripts" style="width:200px;padding:10px;margin-bottom:10px;margin-right:10px;"></button>');
-    this.document.writeln('<button id="run-button" style="width:100px;padding:10px;margin-bottom:10px;">Run</button>');
     this.document.write('<pre>');
     this.document.write('<code class="language-js">');
   }
@@ -584,17 +581,4 @@ TestCafeRenderer.prototype.checkImageSrc = function (item) {
   this.stmt('.ok()', 2);
   this.stmt('.expect(await Selector("' + this.getControl(item) + '").getAttribute("src"))', 2);
   this.stmt('.notEql("")', 2);
-}
-
-TestCafeRenderer.prototype.postToServer = function (url) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', url, true);
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      //alert(xhr.responseText);
-    } else {
-      //alert(xhr.statusText);
-    }
-  }
-  xhr.send(document.getElementsByTagName('pre')[0].innerText);
 }
