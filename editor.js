@@ -21,13 +21,15 @@
   var getCodeBlock = function() {
     function bt(content) {
       return content
-      .replace(/;\s/g, ';\n\n')
-      .replace(/`\s\./g, '`\n  .')
-      .replace(/=>\s{\s/g, '=> {\n  ')
-      .replace(/await\st\s\./g, 'await t\n    .')
-      .replace(/\)\s\./g, ')\n    .')
-      .replace(/\)\s\/\*/g, ')\n    /*')
-      .replace(/\s\}\);/g, '\n});');
+        .replace(/import/g, '\nimport')
+        .replace(/;\s/g, ';\n\n')
+        .replace(/`\s\./g, '`\n  .')
+        .replace(/=>\s{\s/g, '=> {\n  ')
+        .replace(/await\st\s\./g, 'await t\n    .')
+        .replace(/\)\s\./g, ')\n    .')
+        .replace(/\)\s\/\*/g, ')\n    /*')
+        .replace(/\s\}\);/g, '\n});\n')
+        .replace(/\nawait\st\n/g, '\n  await t\n')
     }
     var data = $('.serialize .code-body').text().trim().replace(/\s+\n/g, "").replace(/\s\s+/g, " ");
     return bt(data);
@@ -291,13 +293,9 @@
             var spanList = '';
             for (var i = 0; i < testcafeMap.get(action).length; i++) {
               var pp = para.length > i ? para[i] : '';
-              spanList += getSpan( spanList != '' && pp != '' ? ',' + pp : pp);// || pp == ''
+              spanList += getSpan( spanList != '' && pp != '' ? ',' + pp : pp);
             }
             var srcSpan3 = '.' + action + '(' + spanList + ') ';
-
-            //var action = get2Str(line[index]);
-            //var para = get3Str(line[index]);
-            //var srcSpan3 = '.' + action + '(' + (para != '' ? getSpan(para) : '') + (getOptionFlag(action) ? getSpan('') : '') + ') ';
 
             var li_2 = $('<li></li>');
             li_2.addClass(action + '-block');

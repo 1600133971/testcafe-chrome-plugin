@@ -288,13 +288,7 @@ TestCafeRenderer.prototype.render = function (download) {
 
 TestCafeRenderer.prototype.writeHeader = function (download) {
   var date = new Date();
-  if (!download) {
-    this.space();
-    this.text('//==============================================================================', 0);
-    this.text('// TestCafe generated ' + date + ' ', 0);
-    this.text('//==============================================================================', 0);
-    this.space();
-  }
+  this.space();
   this.stmt('import { Selector, t, ClientFunction } from "testcafe";', 0);
   this.space();
   this.stmt('fixture `fixture demo`', 0);
@@ -482,7 +476,7 @@ TestCafeRenderer.prototype.keypress = function (item) {
 }
 
 TestCafeRenderer.prototype.submit = function (item) {
-  this.stmt("/* submit form */", 2);
+  //this.stmt("/* submit form */", 2);
 }
 
 TestCafeRenderer.prototype.screenShot = function (item) {

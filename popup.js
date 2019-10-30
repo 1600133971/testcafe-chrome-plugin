@@ -67,10 +67,6 @@ RecorderUI.prototype.set_started = function() {
   e.value = "Stop Recording";
   e = document.getElementById("bgo");
   e.className += " hide";
-  e = document.getElementById("bcomment");
-  e.className = e.className.replace(/ hide|hide/ig, "");
-  e = document.getElementById("bexport");
-  e.className += " hide";
   e = document.getElementById("bedit");
   e.className += " hide";
   e = document.getElementById("recording");
@@ -99,10 +95,6 @@ RecorderUI.prototype.set_stopped = function() {
   e.className += " hide";
   e = document.getElementById("bgo");
   e.className = e.className.replace(/ hide|hide/ig, "");
-  e = document.getElementById("bcomment");
-  e.className += " hide";
-  e = document.getElementById("bexport");
-  e.className = e.className.replace(/ hide|hide/ig, "");
   e = document.getElementById("bedit");
   e.className = e.className.replace(/ hide|hide/ig, "");
   e = document.getElementById("recording");
@@ -120,32 +112,6 @@ RecorderUI.prototype.set_stopped = function() {
   $('.selectpicker').prop('disabled', false);
 }
 
-RecorderUI.prototype.showcomment = function() {
-  var e = document.getElementById("bcomment");
-  e.className += " hide";
-  e = document.getElementById("comment");
-  e.className = e.className.replace(/hide/ig, "");
-  e = document.getElementById("ctext");
-  e.focus();
-  return false;
-}
-
-RecorderUI.prototype.hidecomment = function(bsave) {
-  var e = document.getElementById("bcomment");
-  e.className = e.className.replace(/ hide|hide/ig, "");
-  e = document.getElementById("comment");
-  e.className += " hide";
-  e = document.getElementById("ctext");
-  if (bsave) {
-    var txt = e.value;
-    if (txt && txt.length > 0) {
-      this.recorder.addComment(e.value, null);
-    }
-  }
-  e.value = "";
-  return false;
-}
-
 RecorderUI.prototype.export = function(options) {
   chrome.tabs.create({url: "./coder.html"});
 }
@@ -160,10 +126,10 @@ RecorderUI.prototype.download = function(){
 
 RecorderUI.prototype.setBtnGoState = function(){
   chrome.tabs.getSelected(null, function (tab) {
-      if(/(chrome|chrome\-extension)\:/.test(tab.url)){
-          document.querySelector("input#bgo").className += " disabled";
-          document.querySelector("input#bgo").disabled = true;
-      }
+    if(/(chrome|chrome\-extension)\:/.test(tab.url)){
+      document.querySelector("input#bgo").className += " disabled";
+      document.querySelector("input#bgo").disabled = true;
+    }
   });
   document.querySelector("input#turl").addEventListener("input", function(){
     var bgoStyle = document.querySelector("input#bgo");
@@ -180,12 +146,8 @@ var ui;
 window.onload = function(){
   document.querySelector('input#bgo').onclick=function() {ui.start(); return false;};
   document.querySelector('input#bstop').onclick=function() {ui.stop(); return false;};
-  document.querySelector('input#bcomment').onclick=function() {ui.showcomment(); return false;};
   document.querySelector('input#bdownload').onclick=function() {ui.download(); return false;};
-  document.querySelector('input#bexport').onclick=function() {ui.export(); return false;};
   document.querySelector('input#bedit').onclick=function() {ui.edit(); return false;};
-  document.querySelector('input#bsavecomment').onclick=function() {ui.hidecomment(true); return false;};
-  document.querySelector('input#bcancelcomment').onclick=function() {ui.hidecomment(false); return false;};
   ui = new RecorderUI();
   ui.setBtnGoState();
 }
