@@ -36,6 +36,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     sendResponse({});
   }
   if (request.action == "get_items") {
-  sendResponse({'items': testcase_items});
+    sendResponse({'items': testcase_items});
   }
 });

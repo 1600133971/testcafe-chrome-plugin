@@ -51,7 +51,7 @@ RecorderUI.prototype.start = function() {
   if (url == "") {
     return false;
   }
-  if ( (url.indexOf("http://") == -1) && (url.indexOf("https://")) ) {
+  if ((url.indexOf("http://") == -1) && (url.indexOf("https://")) ) {
     url = "http://" + url;
   }
   ui.set_started()
@@ -76,12 +76,11 @@ RecorderUI.prototype.set_started = function() {
   e = document.getElementById("bdownload");
   e.className += " hide";
   chrome.browserAction.setBadgeText({
-      "text": "REC"
+    "text": "REC"
   });
   chrome.browserAction.setBadgeBackgroundColor({
-      "color": "#c53929"
+    "color": "#c53929"
   });
-  $('.selectpicker').prop('disabled', true);
 }
 
 RecorderUI.prototype.stop = function() {
@@ -109,11 +108,6 @@ RecorderUI.prototype.set_stopped = function() {
   chrome.browserAction.setBadgeBackgroundColor({
     "color": "#0000"
   });
-  $('.selectpicker').prop('disabled', false);
-}
-
-RecorderUI.prototype.export = function(options) {
-  chrome.tabs.create({url: "./coder.html"});
 }
 
 RecorderUI.prototype.edit = function(options) {
@@ -151,7 +145,3 @@ window.onload = function(){
   ui = new RecorderUI();
   ui.setBtnGoState();
 }
-
-$('.selectpicker').on('changed.bs.select',function(e){
-  localStorage.setItem('typeJS', $('.selectpicker').selectpicker('val'));
-});

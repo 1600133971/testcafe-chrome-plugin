@@ -35,7 +35,7 @@
     return bt(data);
   };
 
-  soramame.setSerializeBlock  = function() {
+  soramame.setSerializeBlock = function() {
     var code = $('<code></code>');
     code .addClass('language-js');
     code.append(getCodeBlock());
@@ -46,7 +46,7 @@
     Rainbow.color();
   };
 
-  soramame.setCode  = function(codeText) {
+  soramame.setCode = function(codeText) {
     var code = $('<code></code>');
     code .addClass('language-js');
     code.append(codeText);
@@ -257,7 +257,7 @@
       initCount();
       if (line[index].trim().startWith("import")) {
         var srcSpan = 'import {' + getSpan(getBraceStr(line[index])) +'} from "' + getSpan(getDQMStr(line[index])) + '"; ';
-  
+
         li.addClass('import-block');
         li.append(getBlockBody(srcSpan), getCodeBody(srcSpan));
       } else if (line[index].trim().startWith("fixture")) {
@@ -274,7 +274,7 @@
         } else {
           index--;
         }
-  
+
         li.addClass('fixture-block');
         li.append(getBlockBody(srcSpan), getCodeBody(srcSpan), codeOl, getBlockBody('; '), getCodeBody('; '));
       } else if (line[index].trim().startWith("test(")) {
@@ -317,11 +317,11 @@
         li.addClass('test-block');
         li.append(getBlockBody(srcSpan2), getCodeBody(srcSpan2), codeOl_1, getBlockBody('}); '), getCodeBody('}); '));
       } else {
-  
+
       }
-  
+
       $("#code-edit").append(li);
-  
+
       $('span.exp-body').click(function() {
         expDialog_hundle = $(this);
         openExpDialog(expDialog_hundle.text());

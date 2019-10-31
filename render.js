@@ -287,11 +287,10 @@ TestCafeRenderer.prototype.render = function (download) {
 }
 
 TestCafeRenderer.prototype.writeHeader = function (download) {
-  var date = new Date();
   this.space();
   this.stmt('import { Selector, t, ClientFunction } from "testcafe";', 0);
   this.space();
-  this.stmt('fixture `fixture demo`', 0);
+  this.stmt('fixture `Fixture demo`', 0);
 }
 
 TestCafeRenderer.prototype.writeFooter = function () {
@@ -311,7 +310,7 @@ TestCafeRenderer.prototype.startUrl = function (item) {
   var url = this.rewriteUrl(item.url);
   this.stmt('.page `' + url + '`;', 1);
   this.space();
-  this.stmt('test("TestCafeJS test", async t => {', 0);
+  this.stmt('test("TestCafe test", async t => {', 0);
   this.stmt('await t', 1);
 }
 
